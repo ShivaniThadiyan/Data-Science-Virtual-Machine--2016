@@ -21,7 +21,7 @@
         "subnetName": "dsvm-subnet",
         "subnetPrefix": "10.1.0.0/24",
         "publicIpAddressName": "dsvm-ip",
-        "DSVMdnsName": "[concat('dsvm',uniqueString(resourceGroup().id))]",
+        "dsvmdnsName": "[concat('dsvm',uniqueString(resourceGroup().id))]",
         "publicIpAddressType": "Dynamic"      
     },
     "resources": [
@@ -149,7 +149,7 @@
             "properties": {
                 "publicIpAllocationMethod": "[variables('publicIpAddressType')]",
                 "dnsSettings": {
-                    "domainNameLabel": "[variables('DSVMdnsName')]"
+                    "domainNameLabel": "[variables('dsvmdnsName')]"
                 }
             },
             "sku": {
@@ -215,7 +215,7 @@
             "type": "string",
             "value": "[parameters('adminPassword')]"
         },
-         "DSVMdnsName":{
+         "dsvmdnsName":{
             "type": "string",
             "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIpAddressName'))).dnsSettings.fqdn]"
         } 
