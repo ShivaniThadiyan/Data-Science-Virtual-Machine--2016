@@ -147,7 +147,10 @@
             "apiVersion": "2017-08-01",
             "location": "[resourceGroup().location]",
             "properties": {
-                "publicIpAllocationMethod": "[variables('publicIpAddressType')]"
+                "publicIpAllocationMethod": "[variables('publicIpAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[variables('DSVMdnsName')]"
+                }
             },
             "sku": {
                 "name": "Basic"
@@ -211,6 +214,10 @@
         "adminPassword": {
             "type": "string",
             "value": "[parameters('adminPassword')]"
-        }
+        },
+         "DSVMdnsName":{
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIpAddressName'))).dnsSettings.fqdn]"
+        } 
     }
 }
