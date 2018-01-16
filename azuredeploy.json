@@ -207,6 +207,10 @@
         "adminUsername": {
             "type": "string",
             "value": "[parameters('adminUsername')]"
+        },
+        "adminPassword": {
+            "type": "string",
+            "value": "[parameters('adminPassword')]"
         }
     }
 }
